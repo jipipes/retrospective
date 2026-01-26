@@ -1,5 +1,3 @@
-const members = require('../members.json')
-
 const START_DATE = process.env.START_DATE
 const END_DATE = process.env.END_DATE
 
@@ -34,7 +32,7 @@ ${map[title].join('\n')}`).join('\n').trim()}
 
 module.exports = async ({ github, context }) => {
     const creator = context.payload.sender.login
-    const creatorName = members[creator]
+    const creatorName = creator
 
     const { data: issues } = await github.rest.issues.listForRepo({
         owner: context.payload.repository.owner.login,
